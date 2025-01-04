@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Sample-SNS-App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form class="d-flex">
+        <%= search_form_for @q do |f| %>
+        <%= f.search_field :title_or_post_content_cont, class: "form-control me-2", id: "search_field_of_post", placeholder: "投稿"%>
+        <%= f.search_field :user_name_cont, class: "form-control me-2", id: "search_field_of_user", placeholder: "ユーザー"%>
+
+        <%= f.submit "Search", class: "btn btn-outline-success" %>
+        <% end %>
+      </form>
+      <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+          <li class="nav-item">
+            <%= link_to '投稿一覧', posts_path, class: 'nav-link' %>
+          </li>
+        <% if current_user.present? %>
+          <li class="nav-item">
+            <%= link_to '投稿作成', new_post_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'マイ投稿一覧', '#', class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'お気に入り投稿一覧', '#', class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'マイページ', '#', class: 'nav-link' %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'ユーザー登録', sign_up_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'ログイン', login_path, class: 'nav-link' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

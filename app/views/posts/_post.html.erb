@@ -1,0 +1,30 @@
+<div class="col-12 mb-3">
+  <div class="index-posts">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">
+          <i class="bi bi-book"></i>
+          <%= link_to post.title, post_path(post) %>
+        </h4>
+        <br>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <i class="bi bi-person"></i>
+            Name
+            <br>
+            <%= link_to post.user.name, '#' %>
+          </li>
+          <li class="list-inline-item">
+            <i class="bi bi-calendar3"></i>
+            Created_at
+            <br>
+            <%= l post.created_at, format: :long %>
+          </li>
+        </ul>
+        <p class="card-text">
+          <%= post.post_content %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

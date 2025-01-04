@@ -1,0 +1,16 @@
+<footer id='footer' class="footer-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <% if current_user.present? %>
+          <li class="nav-item">
+            <%= link_to 'ログアウト', logout_path, class: 'nav-link', data: { turbo_method: :delete, turbo_confirm: 'ログアウトします' } %>
+          </li>
+        <% end %>
+        <div class="copyright">
+          <p>Copyright © 2025. MARUI</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
