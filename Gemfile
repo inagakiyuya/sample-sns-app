@@ -63,3 +63,6 @@ gem "sorcery"
 gem "ransack"
 gem "carrierwave"
 gem "kaminari"
+
+#Add
+gem "byebug"

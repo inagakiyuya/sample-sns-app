@@ -1,0 +1,31 @@
+<li>
+  <% @comments.each do |comment| %>
+  <div class="card-body">
+    <% if logged_in? %>
+      <% if comment.user_id == current_user.id %>
+        <div class="text">
+          <%= form_with model: [@post, comment] do |f| %>
+            <%= f.text_area :comment_content, rows: 5, cols:50 %>
+            <%= f.submit "コメントを編集" %>
+          <% end %>
+        </div>
+      <% else %>
+        <p>内容: <%= comment.comment_content %></p>
+      <% end %>
+    <% else %>
+      <p>内容: <%= comment.comment_content %></p>
+    <% end %>
+    <p>投稿者: <%= link_to comment.user.name, '#' %></p>
+    <p>投稿日時: <%= l comment.created_at, format: :long %></p>
+    <% if logged_in? %>
+      <% if comment.user_id == current_user.id %>
+        <%= link_to post_comment_path(@post, comment), data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } do %>
+          <i class="bi bi-trash"></i>
+          Delete
+        <% end %>
+      <% end %>
+    <% end %>
+    <hr>
+  </div>
+  <% end %>
+</li>

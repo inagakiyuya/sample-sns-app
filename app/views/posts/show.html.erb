@@ -1,0 +1,44 @@
+<div class="container pt-5">
+  <div class="row mb-3">
+    <div class="col-lg-8 offset-lg-2">
+      <!-- 投稿内容 -->
+      <article class="card">
+        <div class="card-body">
+          <div class='row'>
+            <div class='col-md-3'>
+              <%= image_tag @post.image_url, class: 'card-img-top img-fluid', size: '300x200' %>
+            </div>
+            <div class='col-md-9'>
+              <h3 class="d-inline"><%= @post.title %></h3>
+              <ul class='crud-menu-btn list-inline float-right'>
+                <li class="list-inline-item">
+                  <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}" do %>
+                    <i class="bi bi-pen-fill"></i>
+                    Edit
+                  <% end %>
+                </li>
+                <li class="list-inline-item">
+                  <%= link_to post_path(@post), id: "button-delete-#{@post.id}", data: { turbo_method: :delete } do %>
+                    <i class="bi bi-trash"></i>
+                    Delete
+                  <% end %>
+                </li>
+              </ul>
+              <ul class="list-inline">
+                <li class="list-inline-item">by <%= @post.user.name %></li>
+                <li class="list-inline-item"><%= l @post.created_at, format: :long  %></li>
+              </ul>
+            </div>
+          </div>
+          <p><%= simple_format(@post.post_content) %></p> #③
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- コメントフォーム -->
+  <%= render 'comments/form', { post: @post, comment: @comment } %>
+
+  <!-- コメントエリア -->
+  <%= render 'comments/comments', { comments: @comments } %>
+</div>

@@ -22,12 +22,12 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
     @comments = @post.comments
-    @comment = current_user.comments.new
   end
 
   def edit
-    @post = current_user.posts.new(post_params)
+    @post = current_user.posts.find(params[:id])
   end
 
   def update
@@ -46,9 +46,13 @@ class PostsController < ApplicationController
     redirect_to posts_path, success: "投稿の削除に成功しました。"
   end
 
+  def likes
+    @liked_posts = current_user.liked_posts
+  end
+
   private
     
   def post_params
-    params.require(:post).permit(:title, :post_content)
+    params.require(:post).permit(:title, :post_content, :image, :image_cache)
   end
 end

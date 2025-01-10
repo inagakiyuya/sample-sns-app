@@ -14,28 +14,49 @@
         <% end %>
       </form>
       <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
-          <li class="nav-item">
-            <%= link_to '投稿一覧', posts_path, class: 'nav-link' %>
+          <li class="list-inline-item">
+            <%= link_to posts_path, class: 'nav-link' do %>
+              <i class="bi bi-journal-text"></i>
+              投稿一覧
+            <% end %>
           </li>
         <% if current_user.present? %>
-          <li class="nav-item">
-            <%= link_to '投稿作成', new_post_path, class: 'nav-link' %>
+          <li class="list-inline-item">
+            <%= link_to new_post_path, class: 'nav-link' do %>
+              <i class="bi bi-plus-square"></i>
+              投稿作成
+            <% end %>
           </li>
-          <li class="nav-item">
-            <%= link_to 'マイ投稿一覧', '#', class: 'nav-link' %>
+          <li class="list-inline-item">
+            <%= link_to '#', class: 'nav-link' do %>
+              <i class="bi bi-file-earmark-person"></i>
+              マイ投稿一覧
+            <% end %>
           </li>
-          <li class="nav-item">
-            <%= link_to 'お気に入り投稿一覧', '#', class: 'nav-link' %>
+          <li class="list-inline-item">
+            <%= link_to '#', class: 'nav-link' do %>
+              <i class="bi bi-file-check-fill"></i>
+              お気に入り投稿一覧
+            <% end %>
           </li>
-          <li class="nav-item">
-            <%= link_to 'マイページ', '#', class: 'nav-link' %>
+          <li class="list-inline-item">
+            <%= link_to edit_profile_path, class: 'nav-link' do %>
+              <i class="bi bi-person-circle"></i>
+              マイページ
+            <% end %>
           </li>
         <% else %>
-          <li class="nav-item">
-            <%= link_to 'ユーザー登録', sign_up_path, class: 'nav-link' %>
+          <li class="list-inline-item">
+            <%= link_to sign_up_path, class: 'nav-link' do %>
+              <i class="bi bi-database-add"></i>
+              ユーザー登録
+            <% end %>
           </li>
-          <li class="nav-item">
-            <%= link_to 'ログイン', login_path, class: 'nav-link' %>
+          <li class="list-inline-item">
+            <%= link_to login_path, class: 'nav-link' do %>
+              <i class="bi bi-arrow-up-square"></i>
+              ログイン
+            <% end %>
           </li>
         <% end %>
       </ul>

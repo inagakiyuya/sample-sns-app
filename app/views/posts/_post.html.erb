@@ -1,18 +1,33 @@
 <div class="col-12 mb-3">
   <div class="index-posts">
     <div class="card">
+      <%= image_tag post.image_url, class: 'card-img-top', size: '200x600' %>
       <div class="card-body">
         <h4 class="card-title">
           <i class="bi bi-book"></i>
           <%= link_to post.title, post_path(post) %>
         </h4>
         <br>
+        <ul class='crud-menu-btn list-inline float-right'>
+          <li class="list-inline-item">
+            <%= link_to edit_post_path(post), id: "button-edit-#{post.id}" do %>
+              <i class="bi bi-pen-fill"></i>
+              Edit
+            <% end %>
+          </li>
+          <li class="list-inline-item">
+            <%= link_to post_path(post), id: "button-delete-#{post.id}", data: { turbo_method: :delete } do %>
+              <i class="bi bi-trash"></i>
+              Delete
+            <% end %>
+          </li>
+        </ul>
         <ul class="list-inline">
           <li class="list-inline-item">
             <i class="bi bi-person"></i>
             Name
             <br>
-            <%= link_to post.user.name, '#' %>
+            <%= link_to post.user.name, view_profile_path(post.user) %>
           </li>
           <li class="list-inline-item">
             <i class="bi bi-calendar3"></i>
